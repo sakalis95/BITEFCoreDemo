@@ -302,7 +302,12 @@ using System.Linq;
 
 class DepartmentRepository
 {
-    private static EFCoreDemoDbContext _context = new EFCoreDemoDbContext();
+    private static EFCoreDemoDbContext _context;
+
+    public DepartmentRepository(EFCoreDemoDbContext context)
+    {
+        _context = context;
+    }
     static void GetDepartmentsWithEmployees()
     {
         var deps = _context.Departments.Include("Employees");
